@@ -348,7 +348,7 @@ box-shadow:0 15px 40px var(--shadow-color);border:0px solid var(--border-color-l
 canvas{display:block;width:100%;height:100%;touch-action:manipulation;object-fit:contain;border-radius:18px;background:transparent}
 .footer-controls{background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));transition:all var(--transition-smooth);position:fixed;bottom:calc(10px + var(--safe-area-bottom));left:10px;width:calc(100% - 20px);margin-bottom:0;z-index:1900;box-shadow:0 -6px 30px var(--shadow-color);display:flex;align-items:center;border:1px solid var(--border-color-light);border-radius:40px;height:var(--footer-base-height);padding:8px 16px}
 
-.control-icons{display:flex;justify-content:space-around;align-items:center;gap:16px;width:100%}
+.control-icons{display:flex;justify-content:center;align-items:center;gap:16px;width:100%}
 .control-icon{display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:10px 14px;border-radius:16px;transition:all var(--transition-smooth);background:rgba(255,255,255,0.0);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border: none; solid var(--border-color-light);color:var(--text-color-light);min-width:65px;position:relative;outline:none}
 .control-icon:hover,.control-icon.active,.control-icon:focus{background:var(--orange-main);color:white;transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,110,65,0.01);border-color:var(--orange-dark)}
 .control-icon svg{width:22px;height:22px;margin-bottom:4px;stroke-width:2}
@@ -1245,25 +1245,11 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 .text-direction-btn.active{background:var(--orange-main);color:white;border-color:var(--orange-dark);box-shadow:0 4px 12px rgba(255,110,65,0.4)}
 
 
-.layer-panel.active:not(.collapsed):not(.logo-only) {
-    width: 100%; /* Occupy full viewport width */
-    height: 100%; /* Occupy full viewport height (dvh is better for mobile) */
-    top: 0; /* FIX: Changed from 'flex' */
-    right: 0; /* FIX: Changed from 'flex' */
-    left: auto; /* Reset for LTR layouts */
-    max-width: none; /* IMPORTANT: Removes the width constraint from mobile styles */
-    border-radius: 0; /* A fullscreen panel should not have rounded corners */
-    border-left: none; /* Remove side border in fullscreen */
-    z-index: 5000; 
-}
-
-
-
-body[data-lang="fa"] .layer-panel.active:not(.collapsed):not(.logo-only),
-body[data-lang="ar"] .layer-panel.active:not(.collapsed):not(.logo-only) {
-    left: 0;
-    right: auto;
-    border-right: none;
+@media (display-mode: standalone) {
+    .layer-panel {
+        top: calc(var(--header-height) + var(--safe-area-top) + 10px);
+        bottom: calc(var(--footer-height) + var(--safe-area-bottom) + 10px);
+    }
 }
 
 
@@ -1480,7 +1466,7 @@ body[data-lang="ar"] .layer-panel.active:not(.collapsed):not(.logo-only) {
 </button>
 </div>
 <div class="app-title-section">
-<h1 id="appTitle">DACO editor 3</h1>
+<h1 id="appTitle">DACO editor 4</h1>
 <p class="subtitle" id="appSubtitle">made by parham darabi</p>
 </div>
 <div class="header-controls-right">
