@@ -301,9 +301,9 @@ body[data-lang="en"] .forgot-password { text-align: left; }
 @keyframes dacoLogoFloat{0%,100%{transform:translateY(0px) scale(1)}50%{transform:translateY(-20px) scale(1.05)}}
 @keyframes logoShine{0%{transform:translateX(-100%) translateY(-100%) rotate(45deg)}50%{transform:translateX(100%) translateY(100%) rotate(45deg)}100%{transform:translateX(-100%) translateY(-100%) rotate(45deg)}}
 @keyframes textPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.8;transform:scale(1.02)}}
-.header{position:fixed;top:calc(10px + var(--safe-area-top));left:10px;width:calc(100% - 20px);margin-top:0;height:var(--header-base-height);display:flex;align-items:center;justify-content:center;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:40px;z-index:2000;transition:all var(--transition-smooth);padding:8px 16px}
+.header{position:fixed;top:calc(10px + var(--safe-area-top));left:10px;width:calc(100% - 20px);margin-top:0;height:var(--header-base-height);display:flex;align-items:center;justify-content:center;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:40px;z-index:2000;transition:all var(--transition-smooth);padding:8px 16px;overflow:hidden}
 
-.header-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-grow:1;width:100%}
+.header-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-grow:1;height:100%}
 
 body[data-lang="fa"] .header-top,
 body[data-lang="ar"] .header-top {
@@ -316,7 +316,7 @@ body[data-lang="ar"] .header-top {
 .subtitle{margin:0;color:var(--green-main);font-size:0.6rem;opacity:0.8;line-height:1}
 .header-btn,.delete-image-btn{background:rgba(255,255,255,0.0);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border: none; solid var(--border-color-light);cursor:pointer;padding:8px;border-radius:12px;transition:all var(--transition-smooth);color:var(--text-color-light);display:flex;align-items:center;justify-content:center;position:relative;width:40px;height:40px;outline:none}
 .delete-image-btn{background:rgba(255,68,68,0.15);border:1px solid rgba(255,68,68,0.3);color:#ff6e41;display:none}
-.header-btn:hover,.header-btn:focus,.delete-image-btn:hover,.delete-image-btn:focus{background:rgba(255,110,65,0.2);border-color:var(--orange-main);transform:scale(1.05)}
+.header-btn:hover,.header-btn:focus,.delete-image-btn:hover,.delete-image-btn:focus{background:rgba(255,110,65,0.2);border-color:var(--orange-main);transform:scale(0.98)}
 .delete-image-btn:hover,.delete-image-btn:focus{background:rgba(255,68,68,0.25);border-color:#ff4444}
 .header-btn svg,.delete-image-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
 .main-content{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative;background:transparent;min-height:0;padding-top:0;padding-bottom:0;}
@@ -347,12 +347,12 @@ box-shadow:0 15px 40px var(--shadow-color);border:0px solid var(--border-color-l
 .text-frame.active{opacity:1;border-color:var(--green-main)}
 @keyframes selectedTextPulse{0%{opacity:0;transform:scale(0.95);border-color:var(--orange-main);box-shadow:0 0 0 rgba(255,110,65,0)}50%{opacity:1;transform:scale(1.02);border-color:var(--green-main);box-shadow:0 0 25px rgba(27,59,20,0.6)}100%{opacity:0.8;transform:scale(1);border-color:var(--green-main);box-shadow:0 0 15px rgba(27,59,20,0.3)}}
 canvas{display:block;width:100%;height:100%;touch-action:manipulation;object-fit:contain;border-radius:18px;background:transparent}
-.footer-controls{background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));transition:all var(--transition-smooth);position:fixed;bottom:calc(10px + var(--safe-area-bottom));left:10px;width:calc(100% - 20px);margin-bottom:0;z-index:1900;box-shadow:0 -6px 30px var(--shadow-color);display:flex;align-items:center;border:1px solid var(--border-color-light);border-radius:40px;height:var(--footer-base-height);padding:8px 16px;flex-grow:1}
+.footer-controls{background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));transition:all var(--transition-smooth);position:fixed;bottom:calc(10px + var(--safe-area-bottom));left:10px;width:calc(100% - 20px);margin-bottom:0;z-index:1900;box-shadow:0 -6px 30px var(--shadow-color);display:flex;align-items:center;border:1px solid var(--border-color-light);border-radius:40px;height:var(--footer-base-height);padding:8px 16px;flex-grow:1;overflow:hidden}
 
 .control-icons{display:flex;justify-content:space-around;align-items:center;gap:16px;width:100%}
 
 .control-icon{display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:10px 14px;border-radius:16px;transition:all var(--transition-smooth);background:rgba(255,255,255,0.0);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border: none; solid var(--border-color-light);color:var(--text-color-light);min-width:65px;position:relative;outline:none}
-.control-icon:hover,.control-icon.active,.control-icon:focus{background:var(--orange-main);color:white;transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,110,65,0.01);border-color:var(--orange-dark)}
+.control-icon:hover,.control-icon.active,.control-icon:focus{background:var(--orange-main);color:white;transform:scale(0.98);box-shadow:0 8px 30px rgba(255,110,65,0.01);border-color:var(--orange-dark)}
 .control-icon svg{width:22px;height:22px;margin-bottom:4px;stroke-width:2}
 .control-icon span{font-size:0.7rem;font-weight:600}
 .quick-action-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.01);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);display:none;align-items:center;justify-content:center;z-index:3000;opacity:0;transition:all var(--transition-smooth);padding:20px}
@@ -1184,15 +1184,10 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         border-radius: 0;
         border-left: none;
         border-right: none;
-        height: auto; /* 1. ارتفاع را اتوماتیک کن تا رشد کند */
-        
-        /* 2. پدینگ عمودی (بالا و پایین) را متقارن کن (8px) و safe-area را به آن اضافه کن */
-        padding: calc(8px + var(--safe-area-top)) /* top */
-                 calc(16px + var(--safe-area-right)) /* right */
-                 8px /* bottom */
-                 calc(16px + var(--safe-area-left));
+        padding: calc(8px + var(--safe-area-top)) 16px 8px 16px;
+        padding-left: calc(16px + var(--safe-area-left));
+        padding-right: calc(16px + var(--safe-area-right));
     }
-
     .footer-controls {
         bottom: 0;
         margin-bottom: 0;
@@ -1201,17 +1196,11 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         border-radius: 0;
         border-left: none;
         border-right: none;
-        height: auto;
-        
-        /* 2. پدینگ عمودی را متقارن کن (8px) و safe-area را به آن اضافه کن */
-        padding: 8px /* top */
-                 calc(16px + var(--safe-area-right)) /* right */
-                 calc(8px + var(--safe-area-bottom)) /* bottom */
-                 calc(16px + var(--safe-area-left));
-
+        padding: 8px 16px calc(8px + var(--safe-area-bottom)) 16px;
+        padding-left: calc(16px + var(--safe-area-left));
+        padding-right: calc(16px + var(--safe-area-right));
         align-items: center;
     }
-
     .accordion-panel {
         bottom: calc(var(--footer-base-height) + var(--safe-area-bottom));
         left: 0;
@@ -1478,7 +1467,7 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 </button>
 </div>
 <div class="app-title-section">
-<h1 id="appTitle">DACO editorX</h1>
+<h1 id="appTitle">DACO editor POE</h1>
 <p class="subtitle" id="appSubtitle">made by parham darabi</p>
 </div>
 <div class="header-controls-right">
