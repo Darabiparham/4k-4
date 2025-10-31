@@ -1896,7 +1896,7 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
       stroke-width="1.5"/>
   </g>
 </svg>
-<span id="bg-control-desc" data-en="Background" data-fa="بک گراند" data-ar="خلف��ة">Background</span>
+<span id="bg-control-desc" data-en="Background" data-fa="بک گراند" data-ar="خلفية">Background</span>
 </button>
 <button class="control-icon" data-panel="effects" aria-label="Effects settings" aria-describedby="effects-control-desc">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2042,6 +2042,71 @@ body[data-lang="ar"] .hamburger-panel.active {
     display: none;
 }
 
+.footer-controls .control-icons,
+.footer-controls .control-icons * {
+  box-sizing: border-box !important;
+}
+
+.footer-controls {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom, var(--safe-area-bottom))) !important;
+  height: var(--footer-base-height) !important;
+}
+
+.footer-controls .control-icons {
+  display: flex !important;
+  width: 100% !important;
+  height: 100% !important;
+  gap: 16px !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+}
+
+.footer-controls .control-icons > .control-icon {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px 12px !important;
+  min-width: 56px !important;
+  height: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+.footer-controls .control-icons > .control-icon svg {
+  width: 22px !important;
+  height: 22px !important;
+  display: block !important;
+  margin: 0 !important;
+  vertical-align: middle !important;
+  transform: none !important;
+}
+
+.footer-controls .control-icons > .control-icon span {
+  margin-top: 6px !important;
+  display: block !important;
+  line-height: 1 !important;
+}
+
+/* حالت PWA standalone */
+@media (display-mode: standalone) {
+  .footer-controls {
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, var(--safe-area-bottom))) !important;
+    bottom: 10px !important;
+  }
+  .footer-controls .control-icons {
+    height: var(--footer-base-height) !important;
+    align-items: center !important;
+  }
+  .footer-controls .control-icons > .control-icon {
+    align-self: center !important;
+  }
+}
 
 </style>
                     <line class="st0" x1="15" y1="8" x2="23" y2="16"></line>
