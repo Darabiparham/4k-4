@@ -1279,38 +1279,58 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         bottom: 0;
     }
     
+    /* Header fixes - حفظ فرم گرد اما با safe area */
     .header {
-        top: 0;
+        top: var(--safe-area-top);
         left: 0;
-        right: 0;
         width: 100%;
-        border-radius: 0 0 20px 20px;
-        border-top: none;
+        border-radius: 0;
         border-left: none;
         border-right: none;
-        padding: var(--safe-area-top) 16px 8px 16px;
-        height: auto;
-        min-height: var(--header-base-height);
+        border-top: none;
+        padding: 8px 16px;
+        padding-left: max(16px, var(--safe-area-left));
+        padding-right: max(16px, var(--safe-area-right));
+        height: var(--header-base-height);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
-    .footer-controls {
-        bottom: 0;
-        left: 0;
-        right: 0;
+    /* Header top - تراز مرکزی */
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
-        border-radius: 20px 20px 0 0;
+    }
+
+    /* Footer fixes - آیکون‌ها در مرکز */
+    .footer-controls {
+        bottom: var(--safe-area-bottom);
+        left: 0;
+        width: 100%;
+        border-radius: 0;
         border-left: none;
         border-right: none;
         border-bottom: none;
-        padding: 8px 16px var(--safe-area-bottom) 16px;
-        height: auto;
-        min-height: var(--footer-base-height);
+        padding: 8px 16px;
+        padding-left: max(16px, var(--safe-area-left));
+        padding-right: max(16px, var(--safe-area-right));
+        height: var(--footer-base-height);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
+    /* آیکون‌های footer - مرکز کامل */
     .control-icons {
-        padding-bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
     }
-}
 
     .accordion-panel {
         bottom: calc(var(--footer-base-height) + var(--safe-area-bottom));
@@ -1320,14 +1340,15 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         margin-bottom: 0;
         border-radius: 20px 20px 0 0;
         max-height: calc(40vh - var(--footer-base-height));
-        padding-left: calc(10px + var(--safe-area-left));
-        padding-right: calc(10px + var(--safe-area-right));
+        padding-left: max(10px, var(--safe-area-left));
+        padding-right: max(10px, var(--safe-area-right));
     }
+    
     .canvas-container {
         padding-top: calc(var(--header-base-height) + var(--safe-area-top) + 10px);
         padding-bottom: calc(var(--footer-base-height) + var(--safe-area-bottom) + 10px);
-        padding-left: var(--safe-area-left, 10px);
-        padding-right: var(--safe-area-right, 10px);
+        padding-left: max(10px, var(--safe-area-left));
+        padding-right: max(10px, var(--safe-area-right));
     }
     .undo-redo-bar {
         top: calc(var(--header-height) + var(--safe-area-top)); /* حذف '+ 10px' */
