@@ -1186,11 +1186,18 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         border-left: none;
         border-right: none;
         border-top: none;
-        min-height: calc(var(--header-base-height) + var(--safe-area-top));
         height: auto;
-        padding: var(--safe-area-top) 16px 0 16px;
+        display: grid;
+        grid-template-rows: var(--safe-area-top) var(--header-base-height);
+        grid-template-columns: 1fr;
+        padding: 0 16px;
         padding-left: calc(16px + var(--safe-area-left));
         padding-right: calc(16px + var(--safe-area-right));
+        align-items: center;
+    }
+    .header-top {
+        grid-row: 2;
+        align-self: center;
     }
 
     .footer-controls {
@@ -1202,11 +1209,18 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         border-left: none;
         border-right: none;
         border-bottom: none;
-        min-height: calc(var(--footer-base-height) + var(--safe-area-bottom));
         height: auto;
-        padding: 0 16px var(--safe-area-bottom) 16px;
+        display: grid;
+        grid-template-rows: var(--footer-base-height) var(--safe-area-bottom);
+        grid-template-columns: 1fr;
+        padding: 0 16px;
         padding-left: calc(16px + var(--safe-area-left));
         padding-right: calc(16px + var(--safe-area-right));
+        align-items: center;
+    }
+    .control-icons {
+        grid-row: 1;
+        align-self: center;
     }
 
     .accordion-panel {
@@ -1475,7 +1489,7 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 </button>
 </div>
 <div class="app-title-section">
-<h1 id="appTitle">DACO POEE</h1>
+<h1 id="appTitle">DACO editor POX</h1>
 <p class="subtitle" id="appSubtitle">made by parham darabi</p>
 </div>
 <div class="header-controls-right">
