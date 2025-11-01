@@ -307,7 +307,7 @@ body[data-lang="en"] .forgot-password { text-align: left; }
 
 body[data-lang="fa"] .header-top,
 body[data-lang="ar"] .header-top {
-    flex-direction: row-reverse;
+    direction: rtl;
 }
 .header-controls{display:flex;align-items:center;gap:8px}
 .header-controls-left,.header-controls-right{display:flex;align-items:center;gap:8px}
@@ -745,8 +745,8 @@ textarea:focus,input:focus,select:focus{border-color:var(--orange-main);box-shad
 position:fixed;
 top: calc(var(--header-base-height) + var(--safe-area-top) + 20px);
 bottom: calc(var(--footer-base-height) + var(--safe-area-bottom) + 20px);
-right:-320px;
-width:320px;
+right:-400px;
+width:400px;
 height: auto;
 background:var(--panel-bg-light);
 backdrop-filter:blur(var(--glass-blur)); 
@@ -758,7 +758,7 @@ border-left:1px solid var(--border-color-light);
 display:flex;
 flex-direction:column;
 overflow:hidden;
-border-radius: 20px;
+border-radius: 20px 0 0 20px;
 }
 
 
@@ -847,14 +847,25 @@ body[data-lang="ar"] .layer-panel.logo-only{
     border-radius: 0 12px 12px 0;
 }
 
-/* RTL Support - Layer Panel on Left for Persian/Arabic (opposite to hamburger on right) */
 body[data-lang="fa"] .layer-panel,
-body[data-lang="ar"] .layer-panel{right:auto;left:-320px;border-left:none;border-right:1px solid var(--border-color-light);box-shadow:8px 0 40px var(--shadow-color);transition: left var(--transition-smooth), width var(--transition-smooth);}
-;transition:left 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s ease;}
+body[data-lang="ar"] .layer-panel{
+    right:auto;
+    left:-400px;
+    border-left:none;
+    border-right:1px solid var(--border-color-light);
+    box-shadow:8px 0 40px var(--shadow-color);
+    transition: left var(--transition-smooth), width var(--transition-smooth);
+    border-radius: 0 20px 20px 0;
+}
 body[data-lang="fa"] .layer-panel.active,
 body[data-lang="ar"] .layer-panel.active{left:0;right:auto;}
+body[data-lang="fa"] .layer-panel.collapsed,
+body[data-lang="ar"] .layer-panel.collapsed{left:0;right:auto;}
 body[data-lang="fa"] .layer-panel .collapse-btn svg,
 body[data-lang="ar"] .layer-panel .collapse-btn svg{transform:scaleX(-1);}
+body[data-lang="fa"] .layer-panel.collapsed .collapse-btn svg,
+body[data-lang="ar"] .layer-panel.collapsed .collapse-btn svg{transform:scaleX(-1) rotate(180deg);}
+
 .layer-panel .panel-header .close-panel {
     display: none;
 }
@@ -905,12 +916,13 @@ body[data-lang="ar"] .layer-info {
 .layer-name{font-size:0.85rem;font-weight:600;color:var(--text-color-light);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
 .layer-z-index{font-size:0.7rem;opacity:0.7;color:var(--text-color-light)}
 .layer-actions{display:flex;gap:6px;align-items:center}
-.layer-action-btn{width:50px;height:30px;border-radius:20px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1);color:var(--text-color-light);flex-shrink:0;position:relative;overflow:hidden}
-.layer-action-btn::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,255,255,0.15),transparent);opacity:0;transition:opacity 0.25s ease}
+.layer-action-btn{width:42px;height:38px;border-radius:10px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1);color:var(--text-color-light);flex-shrink:0;position:relative;overflow:hidden}
+.layer-action-btn svg{width:22px;height:22px;flex-shrink:0;}
 .layer-action-btn:hover::before{opacity:1}
 .layer-action-btn:hover{background:rgba(255,110,65,0.25);border-color:rgba(255,110,65,0.6);transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,110,65,0.3)}
 .layer-action-btn:active{transform:translateY(0) scale(0.96);box-shadow:0 2px 6px rgba(255,110,65,0.2)}
-.layer-action-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;transition:all 0.2s ease}
+.layer-action-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;transition:all 0.2s ease}
+
 .layer-drag-handle svg{width:18px;height:18px;fill:currentColor;stroke:none}
 .layer-action-btn.visibility-btn.hidden{opacity:0.5;background:rgba(100,100,100,0.15)}
 .layer-action-btn.visibility-btn.hidden svg{opacity:0.6;stroke:#888}
@@ -959,16 +971,17 @@ body[data-lang="ar"] .layer-info {
 }
 
 @media (max-width: 768px) {
-.layer-panel{width:280px;right:-280px;}
+.layer-panel{width:280px;right:-280px; border-radius: 20px 0 0 20px;}
 .layer-panel.collapsed{width:60px;}
 .layer-panel.logo-only{width:50px; height: 50px;}
 body[data-lang="fa"] .layer-panel,
-body[data-lang="ar"] .layer-panel{left:-280px;right:auto;}
+body[data-lang="ar"] .layer-panel{left:-360px;right:auto; border-radius: 0 20px 20px 0;}
 body[data-lang="fa"] .layer-panel.collapsed,
 body[data-lang="ar"] .layer-panel.collapsed{left:-60px;}
 body[data-lang="fa"] .layer-panel.logo-only,
 body[data-lang="ar"] .layer-panel.logo-only{left:0px;}
 }
+
 
 @media (max-width: 480px) {
 .layer-panel{width:100%;max-width:min(320px,90vw);right:calc(-1 * min(320px,90vw));border-left:none;border-top-left-radius:20px;border-bottom-left-radius:20px;}
@@ -1230,7 +1243,8 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}}
 @media print{.header,.footer-controls,.accordion-panel,.quick-action-modal,.crop-modal,.download-modal{display:none!important}.main-content{padding:0}}
-.undo-redo-bar{position:fixed;top:calc(var(--header-height) + var(--safe-area-top) + 10px);left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:8px;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:16px;padding:8px 20px;z-index:1999;box-shadow:0 4px 15px var(--shadow-color);transition:all var(--transition-smooth)}
+.undo-redo-bar{position:fixed;top:calc(var(--header-height) + var(--safe-area-top) + 15px);left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:8px;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:50px;padding:8px 20px;z-index:1999;box-shadow:0 4px 15px var(--shadow-color);transition:all var(--transition-smooth); direction: ltr;}
+
 .undo-redo-btn{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border-color-light);cursor:pointer;padding:8px 16px;border-radius:12px;transition:all var(--transition-smooth);color:var(--text-color-light);display:flex;align-items:center;justify-content:center;gap:6px;font-size:0.85rem;font-weight:600;min-width:85px;outline:none}
 .undo-redo-btn:hover,.undo-redo-btn:focus{background:rgba(255,110,65,0.2);border-color:var(--orange-main);transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,110,65,0.3)}
 .undo-redo-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important;background:rgba(128,128,128,0.1)!important;border-color:rgba(128,128,128,0.2)!important}
@@ -1660,7 +1674,8 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 <label for="imageInput" id="photo-placeholder" role="button" aria-label="Upload image or double tap for quick actions">+</label>
 <canvas id="canvas" role="img" aria-label="Canvas with image and text overlay"></canvas>
 <div class="color-picker-cursor" id="colorPickerCursor">
-<svg version="1.1" id="Icons_cursor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" width="222px" height="222px" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier_cursor" stroke-width="0"></g><g id="SVGRepo_tracerCarrier_cursor" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier_cursor"><style >.st0{fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}.undo-redo-bar{position:fixed;top:calc(var(--header-height) + var(--safe-area-top));left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:8px;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-top:none;border-radius:0 0 16px 16px;padding:8px 20px;z-index:1999;box-shadow:0 4px 15px var(--shadow-color);transition:all var(--transition-smooth)}
+<svg version="1.1" id="Icons_cursor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" width="222px" height="222px" fill="#ffffff" stroke="#ffffff"><g id="SVGRepo_bgCarrier_cursor" stroke-width="0"></g><g id="SVGRepo_tracerCarrier_cursor" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier_cursor"><style >.st0{fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}.undo-redo-bar{position:fixed;top:calc(var(--header-height) + var(--safe-area-top) + 15px);left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:8px;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:50px;padding:8px 20px;z-index:1999;box-shadow:0 4px 15px var(--shadow-color);transition:all var(--transition-smooth); direction: ltr;}
+
 .undo-redo-btn{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border-color-light);cursor:pointer;padding:8px 16px;border-radius:12px;transition:all var(--transition-smooth);color:var(--text-color-light);display:flex;align-items:center;justify-content:center;gap:6px;font-size:0.85rem;font-weight:600;min-width:85px;outline:none}
 .undo-redo-btn:hover,.undo-redo-btn:focus{background:rgba(255,110,65,0.2);border-color:var(--orange-main);transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,110,65,0.3)}
 .undo-redo-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important;background:rgba(128,128,128,0.1)!important;border-color:rgba(128,128,128,0.2)!important}
@@ -1854,7 +1869,8 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
                 <g id="SVGRepo_bgCarrier_btn" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier_btn" stroke-linecap="round" stroke-linejoin="round"></g>
                 <g id="SVGRepo_iconCarrier_btn">
-                    <style >.st0{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}.undo-redo-bar{position:fixed;top:calc(var(--header-height) + var(--safe-area-top));left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:8px;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-top:none;border-radius:0 0 16px 16px;padding:8px 20px;z-index:1999;box-shadow:0 4px 15px var(--shadow-color);transition:all var(--transition-smooth)}
+                    <style >.st0{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}.undo-redo-bar{position:fixed;top:calc(var(--header-height) + var(--safe-area-top) + 15px);left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:8px;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:50px;padding:8px 20px;z-index:1999;box-shadow:0 4px 15px var(--shadow-color);transition:all var(--transition-smooth); direction: ltr;}
+
 .undo-redo-btn{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border-color-light);cursor:pointer;padding:8px 16px;border-radius:12px;transition:all var(--transition-smooth);color:var(--text-color-light);display:flex;align-items:center;justify-content:center;gap:6px;font-size:0.85rem;font-weight:600;min-width:85px;outline:none}
 .undo-redo-btn:hover,.undo-redo-btn:focus{background:rgba(255,110,65,0.2);border-color:var(--orange-main);transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,110,65,0.3)}
 .undo-redo-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important;background:rgba(128,128,128,0.1)!important;border-color:rgba(128,128,128,0.2)!important}
@@ -4383,7 +4399,7 @@ class DownloadManager{constructor(){this.jpegQuality=0.9;this.vipJpegQuality=1.0
     this.updateDownloadModalContent();
     accessibilityManager.openModal('downloadModal')
 }catch(error){memoryManager.logError('DOWNLOAD_MODAL_ERROR',error)}}
-updateDownloadModalContent(){try{const saveToGalleryTitle=DOM.get('saveToGalleryTitle');if(saveToGalleryTitle){const hasText=appState.textObjects.some(t=>t.text.trim());if(hasText){saveToGalleryTitle.textContent=appState.currentLang==='fa'?'استوری کامل JPEG':appState.currentLang==='ar'?'قصة كاملة JPEG':'Complete Story JPEG'}else{saveToGalleryTitle.textContent=appState.currentLang==='fa'?'عکس کیفیت خ��ب':appState.currentLang==='ar'?'صورة جودة جيدة':'Good Quality JPEG'}}}catch(error){memoryManager.logError('DOWNLOAD_MODAL_UPDATE_ERROR',error)}}hasContent(){return appState.img||appState.textObjects.some(t=>t.text.trim())}async handleDownloadAction(action){try{if(!this.hasContent()){showAlert(languageManager.translateText('alertImage'));return}switch(action){case'save-gallery':await this.saveStandardQuality();break;case'save-vip-quality':await this.saveVipQuality();break;case'download-transparent':await this.downloadTransparent();break;default:memoryManager.logError('UNKNOWN_ACTION',new Error(`Unknown action: ${action}`));break}accessibilityManager.closeModal('downloadModal')}catch(error){memoryManager.logError('DOWNLOAD_ACTION_ERROR',error);showAlert(errorBoundary.translateError(error?.message||'DOWNLOAD_ERROR'))}}async saveStandardQuality(){try{const dimensions=canvasRenderer.getExportDimensions('standard');const canvas=await this.createExportCanvas('jpeg',dimensions);const blob=await new Promise((resolve,reject)=>{canvas.toBlob((blob)=>{if(blob){resolve(blob)}else{reject(new Error('BLOB_GENERATION_FAILED'))}}, 'image/jpeg',this.jpegQuality)});await this.saveToDevice(blob,'DACO_Story.jpg');showAlert(languageManager.translateText('saveSuccess'))}catch(error){memoryManager.logError('STANDARD_QUALITY_ERROR',error);throw error}}async saveVipQuality(){try{const dimensions=canvasRenderer.getExportDimensions('vip');const canvas=await this.createExportCanvas('jpeg',dimensions);const blob=await new Promise((resolve,reject)=>{canvas.toBlob((blob)=>{if(blob){resolve(blob)}else{reject(new Error('BLOB_GENERATION_FAILED'))}}, 'image/jpeg',this.vipJpegQuality)});await this.saveToDevice(blob,'DACO_VIP_4K.jpg');showAlert(languageManager.translateText('saveVipSuccess'))}catch(error){memoryManager.logError('VIP_QUALITY_ERROR',error);throw error}}async downloadTransparent(){try{const hasText=appState.textObjects.some(t=>t.text.trim());if(!hasText){const message=appState.currentLang==='fa'?'ابتدا متن را وارد کنید':appState.currentLang==='ar'?'أدخل النص أولاً':'Please enter text first';showAlert(message);return}const dimensions=canvasRenderer.getExportDimensions('vip');const tempCanvas=document.createElement('canvas');const tempCtx=tempCanvas.getContext('2d',{alpha:true});tempCanvas.width=dimensions.width;tempCanvas.height=dimensions.height;canvasRenderer.drawTextObjectsToExportCanvas(tempCtx,dimensions.width,dimensions.height);const blob=await new Promise((resolve,reject)=>{tempCanvas.toBlob((blob)=>{if(blob){resolve(blob)}else{reject(new Error('BLOB_GENERATION_FAILED'))}}, 'image/png',1.0)});await this.saveToDevice(blob,'DACO_Text_Transparent.png')}catch(error){memoryManager.logError('TRANSPARENT_DOWNLOAD_ERROR',error);throw error}}async createExportCanvas(format,targetSize){try{const exportCanvas=document.createElement('canvas');const exportCtx=exportCanvas.getContext('2d');if(!exportCtx)throw new Error('CANVAS_CONTEXT_ERROR');exportCanvas.width=targetSize.width;exportCanvas.height=targetSize.height;const pixels=exportCanvas.width*exportCanvas.height;if(pixels>67108864)throw new Error('MEMORY_ERROR');exportCtx.imageSmoothingEnabled=true;exportCtx.imageSmoothingQuality='high';exportCtx.fillStyle="#FFFFFF";exportCtx.fillRect(0,0,exportCanvas.width,exportCanvas.height);if(appState.img){const img=appState.img;const imgRatio=img.naturalWidth/img.naturalHeight;const canvasRatio=exportCanvas.width/exportCanvas.height;let sx,sy,sw,sh;if(imgRatio>canvasRatio){sh=img.naturalHeight;sw=sh*canvasRatio;sx=(img.naturalWidth-sw)/2;sy=0}else{sw=img.naturalWidth;sh=sw/canvasRatio;sx=0;sy=(img.naturalHeight-sh)/2}exportCtx.drawImage(img,sx,sy,sw,sh,0,0,exportCanvas.width,exportCanvas.height)}canvasRenderer.drawTextObjectsToExportCanvas(exportCtx,exportCanvas.width,exportCanvas.height);return exportCanvas}catch(error){memoryManager.logError('EXPORT_CANVAS_ERROR',error);throw error}}async saveToDevice(blob,filename){try{if(navigator.share&&navigator.canShare&&navigator.canShare({files:[new File([blob],filename)]})){await navigator.share({files:[new File([blob],filename)],title:'DACO  ',text:'Created with DACO   Pro'});return}if('clipboard' in navigator&&'write' in navigator.clipboard){try{const clipboardItem=new ClipboardItem({[blob.type]:blob});await navigator.clipboard.write([clipboardItem]);showAlert(languageManager.translateText('copySuccess'));return}catch(clipboardError){}}await this.downloadFile(blob,filename)}catch(error){memoryManager.logError('SAVE_TO_DEVICE_ERROR',error);throw error}}async downloadFile(blob,filename){try{const url=memoryManager.createBlobUrl(blob);if(!url)throw new Error('BLOB_URL_CREATION_FAILED');const link=document.createElement('a');link.href=url;link.download=filename;link.style.display='none';document.body.appendChild(link);link.click();document.body.removeChild(link);setTimeout(()=>{memoryManager.revokeBlobUrl(url)},1000)}catch(error){memoryManager.logError('DOWNLOAD_FILE_ERROR',error);throw error}}}
+updateDownloadModalContent(){try{const saveToGalleryTitle=DOM.get('saveToGalleryTitle');if(saveToGalleryTitle){const hasText=appState.textObjects.some(t=>t.text.trim());if(hasText){saveToGalleryTitle.textContent=appState.currentLang==='fa'?'ذخیره عکس JPEG':appState.currentLang==='ar'?'حفظ الصورة JPEG':'Save as JPEG'}else{saveToGalleryTitle.textContent=appState.currentLang==='fa'?'عکس کیفیت خوب':appState.currentLang==='ar'?'صورة جودة جيدة':'Good Quality JPEG'}}}catch(error){memoryManager.logError('DOWNLOAD_MODAL_UPDATE_ERROR',error)}}hasContent(){return appState.img||appState.textObjects.some(t=>t.text.trim())}async handleDownloadAction(action){try{if(!this.hasContent()){showAlert(languageManager.translateText('alertImage'));return}switch(action){case'save-gallery':await this.saveStandardQuality();break;case'save-vip-quality':await this.saveVipQuality();break;case'download-transparent':await this.downloadTransparent();break;default:memoryManager.logError('UNKNOWN_ACTION',new Error(`Unknown action: ${action}`));break}accessibilityManager.closeModal('downloadModal')}catch(error){memoryManager.logError('DOWNLOAD_ACTION_ERROR',error);showAlert(errorBoundary.translateError(error?.message||'DOWNLOAD_ERROR'))}}async saveStandardQuality(){try{const dimensions=canvasRenderer.getExportDimensions('standard');const canvas=await this.createExportCanvas('jpeg',dimensions);const blob=await new Promise((resolve,reject)=>{canvas.toBlob((blob)=>{if(blob){resolve(blob)}else{reject(new Error('BLOB_GENERATION_FAILED'))}}, 'image/jpeg',this.jpegQuality)});await this.saveToDevice(blob,'DACO_Story.jpg');showAlert(languageManager.translateText('saveSuccess'))}catch(error){memoryManager.logError('STANDARD_QUALITY_ERROR',error);throw error}}async saveVipQuality(){try{const dimensions=canvasRenderer.getExportDimensions('vip');const canvas=await this.createExportCanvas('jpeg',dimensions);const blob=await new Promise((resolve,reject)=>{canvas.toBlob((blob)=>{if(blob){resolve(blob)}else{reject(new Error('BLOB_GENERATION_FAILED'))}}, 'image/jpeg',this.vipJpegQuality)});await this.saveToDevice(blob,'DACO_VIP_4K.jpg');showAlert(languageManager.translateText('saveVipSuccess'))}catch(error){memoryManager.logError('VIP_QUALITY_ERROR',error);throw error}}async downloadTransparent(){try{const hasText=appState.textObjects.some(t=>t.text.trim());if(!hasText){const message=appState.currentLang==='fa'?'ابتدا متن را وارد کنید':appState.currentLang==='ar'?'أدخل النص أولاً':'Please enter text first';showAlert(message);return}const dimensions=canvasRenderer.getExportDimensions('vip');const tempCanvas=document.createElement('canvas');const tempCtx=tempCanvas.getContext('2d',{alpha:true});tempCanvas.width=dimensions.width;tempCanvas.height=dimensions.height;canvasRenderer.drawTextObjectsToExportCanvas(tempCtx,dimensions.width,dimensions.height);const blob=await new Promise((resolve,reject)=>{tempCanvas.toBlob((blob)=>{if(blob){resolve(blob)}else{reject(new Error('BLOB_GENERATION_FAILED'))}}, 'image/png',1.0)});await this.saveToDevice(blob,'DACO_Text_Transparent.png')}catch(error){memoryManager.logError('TRANSPARENT_DOWNLOAD_ERROR',error);throw error}}async createExportCanvas(format,targetSize){try{const exportCanvas=document.createElement('canvas');const exportCtx=exportCanvas.getContext('2d');if(!exportCtx)throw new Error('CANVAS_CONTEXT_ERROR');exportCanvas.width=targetSize.width;exportCanvas.height=targetSize.height;const pixels=exportCanvas.width*exportCanvas.height;if(pixels>67108864)throw new Error('MEMORY_ERROR');exportCtx.imageSmoothingEnabled=true;exportCtx.imageSmoothingQuality='high';exportCtx.fillStyle="#FFFFFF";exportCtx.fillRect(0,0,exportCanvas.width,exportCanvas.height);if(appState.img){const img=appState.img;const imgRatio=img.naturalWidth/img.naturalHeight;const canvasRatio=exportCanvas.width/exportCanvas.height;let sx,sy,sw,sh;if(imgRatio>canvasRatio){sh=img.naturalHeight;sw=sh*canvasRatio;sx=(img.naturalWidth-sw)/2;sy=0}else{sw=img.naturalWidth;sh=sw/canvasRatio;sx=0;sy=(img.naturalHeight-sh)/2}exportCtx.drawImage(img,sx,sy,sw,sh,0,0,exportCanvas.width,exportCanvas.height)}canvasRenderer.drawTextObjectsToExportCanvas(exportCtx,exportCanvas.width,exportCanvas.height);return exportCanvas}catch(error){memoryManager.logError('EXPORT_CANVAS_ERROR',error);throw error}}async saveToDevice(blob,filename){try{if(navigator.share&&navigator.canShare&&navigator.canShare({files:[new File([blob],filename)]})){await navigator.share({files:[new File([blob],filename)],title:'DACO  ',text:'Created with DACO   Pro'});return}if('clipboard' in navigator&&'write' in navigator.clipboard){try{const clipboardItem=new ClipboardItem({[blob.type]:blob});await navigator.clipboard.write([clipboardItem]);showAlert(languageManager.translateText('copySuccess'));return}catch(clipboardError){}}await this.downloadFile(blob,filename)}catch(error){memoryManager.logError('SAVE_TO_DEVICE_ERROR',error);throw error}}async downloadFile(blob,filename){try{const url=memoryManager.createBlobUrl(blob);if(!url)throw new Error('BLOB_URL_CREATION_FAILED');const link=document.createElement('a');link.href=url;link.download=filename;link.style.display='none';document.body.appendChild(link);link.click();document.body.removeChild(link);setTimeout(()=>{memoryManager.revokeBlobUrl(url)},1000)}catch(error){memoryManager.logError('DOWNLOAD_FILE_ERROR',error);throw error}}}
 const downloadManager=new DownloadManager();
 function initializeEventListeners(){try{const themeToggle=DOM.get('themeToggle');const langSwitch=DOM.get('langSwitch');const imageInput=DOM.get('imageInput');const uploadImageBtn=DOM.get('uploadImageBtn');const deleteImageBtn=DOM.get('deleteImageBtn');const photoPlaceholder=DOM.get('photoPlaceholder');const quickAddImage=DOM.get('quickAddImage');const quickAddText=DOM.get('quickAddText');const fontInput=DOM.get('fontInput');const fontSelector=DOM.get('fontSelector');const addFontPanelBtn=DOM.get('addFontPanelBtn');const textColorGrid=DOM.get('textColorGrid');const bgColorGrid=DOM.get('bgColorGrid');const controlIcons=DOM.get('controlIcons');const accordionPanels=DOM.get('accordionPanels');const closePanelBtns=DOM.get('closePanelBtns');const sliders=['fontSizeSlider','opacitySlider','shadowSlider','strokeSlider','glowSlider','backdropOpacitySlider','backdropRadiusSlider','backdropWidthSlider','backdropHeightSlider','letterSpacingSlider','lineHeightSlider'];
 
@@ -4671,7 +4687,7 @@ layersPanel.classList.remove('logo-only');
 memoryManager.addEventListener(window,'resize',()=>{handleOrientationChange();canvasRenderer.updateCanvasWrapperSize();canvasRenderer.updateCanvasBounds()});
 memoryManager.addEventListener(window,'orientationchange',()=>{setTimeout(()=>{handleOrientationChange();canvasRenderer.updateCanvasWrapperSize();canvasRenderer.updateCanvasBounds()},300)});
 handleOrientationChange();await ServiceWorkerManager.register();
-canvasRenderer.drawCanvas();const dacoLoadingScreen=DOM.get('dacoLoadingScreen');setTimeout(()=>{if(dacoLoadingScreen){dacoLoadingScreen.classList.add('hidden');setTimeout(()=>{dacoLoadingScreen.style.display='none'},800)}},2000);setTimeout(()=>{pwaInstallManager.showPromptIfNeeded()},3000)}catch(error){memoryManager.logError('INITIALIZATION_ERROR',error)}});
+canvasRenderer.drawCanvas();const dacoLoadingScreen=DOM.get('dacoLoadingScreen');setTimeout(()=>{if(dacoLoadingScreen){dacoLoadingScreen.classList.add('hidden');setTimeout(()=>{dacoLoadingScreen.style.display='none'},300)}},300);setTimeout(()=>{pwaInstallManager.showPromptIfNeeded()},3000)}catch(error){memoryManager.logError('INITIALIZATION_ERROR',error)}});
 </script>
 </body>
 </html>
