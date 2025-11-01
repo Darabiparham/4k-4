@@ -303,15 +303,15 @@ body[data-lang="en"] .forgot-password { text-align: left; }
 @keyframes textPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.8;transform:scale(1.02)}}
 .header{position:fixed;top:calc(10px + var(--safe-area-top));left:10px;width:calc(100% - 20px);margin-top:0;height:var(--header-base-height);display:flex;align-items:center;justify-content:center;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:40px;z-index:2000;transition:all var(--transition-smooth);padding:8px 16px}
 
-.header-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-grow:1;width:100%}
+.header-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-grow:1}
 
 body[data-lang="fa"] .header-top,
 body[data-lang="ar"] .header-top {
     flex-direction: row-reverse;
 }
 .header-controls{display:flex;align-items:center;gap:8px}
-.header-controls-left,.header-controls-right{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
-.app-title-section{text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+.header-controls-left,.header-controls-right{display:flex;align-items:center;gap:8px}
+.app-title-section{text-align:center;flex-grow:1}
 #appTitle{font-size:1.1rem;font-weight:800;margin:0;color:var(--green-main);line-height:1.2}
 .subtitle{margin:0;color:var(--green-main);font-size:0.6rem;opacity:0.8;line-height:1}
 .header-btn,.delete-image-btn{background:rgba(255,255,255,0.0);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border: none; solid var(--border-color-light);cursor:pointer;padding:8px;border-radius:12px;transition:all var(--transition-smooth);color:var(--text-color-light);display:flex;align-items:center;justify-content:center;position:relative;width:40px;height:40px;outline:none}
@@ -349,7 +349,7 @@ box-shadow:0 15px 40px var(--shadow-color);border:0px solid var(--border-color-l
 canvas{display:block;width:100%;height:100%;touch-action:manipulation;object-fit:contain;border-radius:18px;background:transparent}
 .footer-controls{background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));transition:all var(--transition-smooth);position:fixed;bottom:calc(10px + var(--safe-area-bottom));left:10px;width:calc(100% - 20px);margin-bottom:0;z-index:1900;box-shadow:0 -6px 30px var(--shadow-color);display:flex;align-items:center;border:1px solid var(--border-color-light);border-radius:40px;height:var(--footer-base-height);padding:8px 16px;flex-grow:1}
 
-.control-icons{display:flex;justify-content:space-evenly;align-items:center;gap:16px;width:100%;height:100%}
+.control-icons{display:flex;justify-content:space-around;align-items:center;gap:16px;width:100%;height:100%}
 
 .control-icon{display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:10px 14px;border-radius:16px;transition:all var(--transition-smooth);background:rgba(255,255,255,0.0);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border: none; solid var(--border-color-light);color:var(--text-color-light);min-width:65px;position:relative;outline:none}
 .control-icon:hover,.control-icon.active,.control-icon:focus{background:var(--orange-main);color:white;transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,110,65,0.01);border-color:var(--orange-dark)}
@@ -1156,7 +1156,7 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 @media (max-width:768px){:root{--header-base-height:55px;--footer-base-height:85px}#appTitle{font-size:1rem}.subtitle{font-size:0.55rem}.control-icon span{font-size:0.65rem}.control-icons{gap:12px}.crop-.crop-modal{padding:8px}.crop-container{padding:12px;border-radius:12px;max-width:96%;max-height:92vh;max-height:92dvh}
 .crop-header h3{font-size:1.05rem}.crop-viewport{min-height:280px;}
 .contact-links{flex-direction:column;align-items:center}.contact-link{width:100%;justify-content:center}.accordion-panel{max-height:calc(45vh - var(--footer-height) - 20px)}.canvas-container{padding:6px}}
-@media (max-width:480px){:root{--footer-base-height:80px;--header-base-height:55px}.header{padding:calc(8px + var(--safe-area-top)) 12px 6px 12px}.footer-controls{padding:8px 12px calc(8px + var(--safe-area-bottom)) 12px}#appTitle{font-size:0.9rem}.control-icons{gap:8px}.control-icon{min-width:55px;padding:8px 10px}.crop-modal{padding:8px}.crop-container{padding:12px;border-radius:12px;max-width:96%;max-height:92vh;max-height:92dvh}.crop-header{margin-bottom:14px}.crop-header h3{font-size:0.95rem}.crop-.crop-viewport{min-height:250px;}
+@media (max-width:480px){:root{--footer-base-height:80px;--header-base-height:55px}.header{padding:8px 12px}.footer-controls{padding:8px 12px}#appTitle{font-size:0.9rem}.control-icons{gap:8px}.control-icon{min-width:55px;padding:8px 10px}.crop-modal{padding:8px}.crop-container{padding:12px;border-radius:12px;max-width:96%;max-height:92vh;max-height:92dvh}.crop-header{margin-bottom:14px}.crop-header h3{font-size:0.95rem}.crop-.crop-viewport{min-height:250px;}
 .crop-instructions{font-size:0.6rem}.zoom-slider{min-width:60px;height:6px}.zoom-slider::-webkit-slider-thumb{width:18px;height:18px}.zoom-slider::-moz-range-thumb{width:18px;height:18px}.zoom-info{font-size:0.65rem;min-width:38px;padding:2px 5px}.layer-panel.active:not(.collapsed):not(.logo-only){max-width:min(320px,90vw)}.layer-panel.collapsed{width:60px}}
 @media (display-mode: standalone) {
     html, body {
@@ -1468,7 +1468,7 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 </button>
 </div>
 <div class="app-title-section">
-<h1 id="appTitle">DACO editor 4</h1>
+<h1 id="appTitle">DACO editor NW</h1>
 <p class="subtitle" id="appSubtitle">made by parham darabi</p>
 </div>
 <div class="header-controls-right">
