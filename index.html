@@ -745,8 +745,9 @@ textarea:focus,input:focus,select:focus{border-color:var(--orange-main);box-shad
 position:fixed;
 top: calc(var(--header-base-height) + var(--safe-area-top) + 20px);
 bottom: calc(var(--footer-base-height) + var(--safe-area-bottom) + 20px);
-right:-400px;
-width:400px;
+right:-100%;
+width:100%;
+max-width:400px;
 height: auto;
 background:var(--panel-bg-light);
 backdrop-filter:blur(var(--glass-blur)); 
@@ -761,8 +762,9 @@ overflow:hidden;
 border-radius: 20px 0 0 20px;
 }
 
-
-.layer-panel.active{right:0;}
+.layer-panel.active{right:0;transition:all 0.3s ease;}
+.layer-panel.active:not(.collapsed):not(.logo-only){width:100% !important;max-width:none !important;}
+.layer-panel.active.collapsed{right:0;}
 .layer-panel.collapsed{width:70px;}
 .layer-panel.collapsed .panel-header span:not(.collapse-btn){display:none;}
 .layer-panel.collapsed .layer-name,
@@ -850,17 +852,21 @@ body[data-lang="ar"] .layer-panel.logo-only{
 body[data-lang="fa"] .layer-panel,
 body[data-lang="ar"] .layer-panel{
     right:auto;
-    left:-400px;
+    left:-100%;
+    width:100%;
+    max-width:400px;
     border-left:none;
     border-right:1px solid var(--border-color-light);
     box-shadow:8px 0 40px var(--shadow-color);
     transition: left var(--transition-smooth), width var(--transition-smooth);
     border-radius: 0 20px 20px 0;
 }
-body[data-lang="fa"] .layer-panel.active,
-body[data-lang="ar"] .layer-panel.active{left:0;right:auto;}
+body[data-lang="fa"] .layer-panel.active:not(.collapsed):not(.logo-only),
+body[data-lang="ar"] .layer-panel.active:not(.collapsed):not(.logo-only){left:0;right:auto;width:100% !important;max-width:none !important;}
+body[data-lang="fa"] .layer-panel.active.collapsed,
+body[data-lang="ar"] .layer-panel.active.collapsed{left:0;right:auto;}
 body[data-lang="fa"] .layer-panel.collapsed,
-body[data-lang="ar"] .layer-panel.collapsed{left:0;right:auto;}
+body[data-lang="ar"] .layer-panel.collapsed{left:0;right:auto;width:70px;}
 body[data-lang="fa"] .layer-panel .collapse-btn svg,
 body[data-lang="ar"] .layer-panel .collapse-btn svg{transform:scaleX(-1);}
 body[data-lang="fa"] .layer-panel.collapsed .collapse-btn svg,
@@ -971,35 +977,33 @@ body[data-lang="ar"] .layer-info {
 }
 
 @media (max-width: 768px) {
-.layer-panel{width:280px;right:-280px; border-radius: 20px 0 0 20px;}
+.layer-panel{width:100%;max-width:280px;right:-100%; border-radius: 20px 0 0 20px;}
+.layer-panel.active:not(.collapsed):not(.logo-only){right:0;width:100%;max-width:none;}
 .layer-panel.collapsed{width:60px;}
 .layer-panel.logo-only{width:50px; height: 50px;}
 body[data-lang="fa"] .layer-panel,
-body[data-lang="ar"] .layer-panel{left:-360px;right:auto; border-radius: 0 20px 20px 0;}
+body[data-lang="ar"] .layer-panel{left:-100%;width:100%;max-width:280px;right:auto; border-radius: 0 20px 20px 0;}
+body[data-lang="fa"] .layer-panel.active:not(.collapsed):not(.logo-only),
+body[data-lang="ar"] .layer-panel.active:not(.collapsed):not(.logo-only){left:0;width:100%;max-width:none;}
 body[data-lang="fa"] .layer-panel.collapsed,
-body[data-lang="ar"] .layer-panel.collapsed{left:-60px;}
+body[data-lang="ar"] .layer-panel.collapsed{left:0;width:60px;}
 body[data-lang="fa"] .layer-panel.logo-only,
 body[data-lang="ar"] .layer-panel.logo-only{left:0px;}
-}
 
 
 @media (max-width: 480px) {
-.layer-panel{width:100%;max-width:min(320px,90vw);right:calc(-1 * min(320px,90vw));border-left:none;border-top-left-radius:20px;border-bottom-left-radius:20px;}
-.layer-panel.active:not(.collapsed):not(.logo-only){width:100%;max-width:min(320px,90vw);right:0;}
-.layer-panel.collapsed{width:60px;right:-60px;}
-.layer-panel.active.collapsed{right:0;}
+.layer-panel{width:100%;right:-100%;border-left:none;border-top-left-radius:20px;border-bottom-left-radius:20px;}
+.layer-panel.active:not(.collapsed):not(.logo-only){width:100%;right:0;max-width:none;}
+.layer-panel.collapsed{width:60px;right:0;}
 .layer-panel.logo-only{width:50px;right:0px;}
 body[data-lang="fa"] .layer-panel,
-body[data-lang="ar"] .layer-panel{left:calc(-1 * min(320px,90vw));max-width:min(320px,90vw);right:auto;border-right:none;border-left:none;border-top-right-radius:20px;border-bottom-right-radius:20px;border-top-left-radius:0;border-bottom-left-radius:0;}
+body[data-lang="ar"] .layer-panel{left:-100%;width:100%;right:auto;border-right:none;border-left:none;border-top-right-radius:20px;border-bottom-right-radius:20px;border-top-left-radius:0;border-bottom-left-radius:0;}
 body[data-lang="fa"] .layer-panel.active:not(.collapsed):not(.logo-only),
-body[data-lang="ar"] .layer-panel.active:not(.collapsed):not(.logo-only){width:100%;max-width:min(320px,90vw);left:0;}
+body[data-lang="ar"] .layer-panel.active:not(.collapsed):not(.logo-only){width:100%;left:0;max-width:none;}
 body[data-lang="fa"] .layer-panel.collapsed,
-body[data-lang="ar"] .layer-panel.collapsed{left:-60px;right:auto;}
-body[data-lang="fa"] .layer-panel.active.collapsed,
-body[data-lang="ar"] .layer-panel.active.collapsed{left:0;right:auto;}
+body[data-lang="ar"] .layer-panel.collapsed{left:0;width:60px;}
 body[data-lang="fa"] .layer-panel.logo-only,
 body[data-lang="ar"] .layer-panel.logo-only{left:0px;}
-}
 
 .crop-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.1);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);display:none;z-index:6000;align-items:center;justify-content:center;padding:0;}
 .crop-modal.active{display:flex}
@@ -1482,7 +1486,7 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 </button>
 </div>
 <div class="app-title-section">
-<h1 id="appTitle">DACO editor NW</h1>
+<h1 id="appTitle">DACO editor NW2</h1>
 <p class="subtitle" id="appSubtitle">made by parham darabi</p>
 </div>
 <div class="header-controls-right">
